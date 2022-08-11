@@ -23,6 +23,7 @@ public class HomeController {
 		@RequestParam(value="livingThing") String livingThing,
 		@RequestParam(value="compliment") String compliment,
 		HttpSession session) {
+		
 		session.setAttribute("number", number);
 		session.setAttribute("cityName", cityName);
 		session.setAttribute("name", name);
@@ -30,12 +31,12 @@ public class HomeController {
 		session.setAttribute("livingThing", livingThing);
 		session.setAttribute("compliment", compliment);
 
-		
 		return "redirect:/show";
 	}
 	
 	@RequestMapping("/show")
 	public String show() {
+		
 		return "show.jsp";
 	}
 }

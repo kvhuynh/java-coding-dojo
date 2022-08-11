@@ -28,12 +28,13 @@
 		  <tbody>
 		  	<c:forEach var="book" items="${books}">
 		  	<tr>
-		      <th><c:out value="${book.id}"/></th>
+		      <th><a href="/books/${book.id}"><c:out value="${book.id}"/></a></th>
 		      <th><c:out value="${book.title}"/></th>
 		      <th><c:out value="${book.language}"/></th>
 		      <th><c:out value="${book.numberOfPages}"/></th>
 		    </tr>
 		  	</c:forEach>
+		    </tr>
 		  </tbody>
 		</table>
 	</body>

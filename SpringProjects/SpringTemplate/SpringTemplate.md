@@ -15,8 +15,19 @@
 - Create src/main/webapp if it is not already made upon project creation
 - Create src/main/webapp/WEB-INF
 - Edit src/main/resources/applications.properties with
-```xml
+
+```properties
+# WEB-INF connection
 spring.mvc.view.prefix=/WEB-INF/
+
+# Connecting to database
+spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.mvc.hiddenmethod.filter.enabled=true
+spring.jpa.hibernate.ddl-auto=update
+
 ```
 
 # pom.xml file
@@ -74,11 +85,39 @@ spring.mvc.view.prefix=/WEB-INF/
     <artifactId>jquery</artifactId>
     <version>3.6.0</version>
 </dependency>
+
+<!-- MySQL Driver and JPA connection  -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<!-- SpringBoot starter validation -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>  
+
 ```
 # ___.jsp file
 - add following to top of code to use c:out
 ```html
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
+
+<!-- For form submission and validations -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>   
+```
+
+# connecting css and js to jsp file
+```html
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script type="text/javascript" src="/js/app.js"></script>
 <!-- for bootstrap -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
@@ -86,10 +125,4 @@ spring.mvc.view.prefix=/WEB-INF/
 <!-- For any Bootstrap that uses JS or jQuery-->
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-```
-
-# connecting css and js to jsp file
-```html
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<script type="text/javascript" src="/js/app.js"></script>
 ```

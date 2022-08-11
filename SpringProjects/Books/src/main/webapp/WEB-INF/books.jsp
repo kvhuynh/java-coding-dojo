@@ -16,25 +16,9 @@
 		<script type="text/javascript" src="/js/app.js"></script>
 	</head>
 	<body>
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th scope="col">ID</th>
-		      <th scope="col">Title</th>
-		      <th scope="col">Language</th>
-		      <th scope="col"># Pages</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		  	<c:forEach var="book" items="${books}">
-		  	<tr>
-		      <th><c:out value="${book.id}"/></th>
-		      <th><c:out value="${book.title}"/></th>
-		      <th><c:out value="${book.language}"/></th>
-		      <th><c:out value="${book.numberOfPages}"/></th>
-		    </tr>
-		  	</c:forEach>
-		  </tbody>
-		</table>
+		<h1><c:out value="${book.title}"/></h1>
+		<h1>Description: <c:out value="${book.description}"/></h1>
+		<h1>Language: <c:out value="${book.language}"/></h1>
+		<h1>Number of Pages: <c:out value="${book.numberOfPages}"/></h1>
 	</body>
 </html>
