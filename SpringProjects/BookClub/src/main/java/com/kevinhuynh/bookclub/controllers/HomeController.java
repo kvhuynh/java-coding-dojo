@@ -24,7 +24,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String index(Model model, HttpSession session) {
 		if (session.getAttribute("uuid") != null) {
-			return "dashboard.jsp";
+			return "redirect:/books";
 		}
 		model.addAttribute("newUser", new User());
 		model.addAttribute("newLogin", new LoginUser());
@@ -38,15 +38,6 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/dashboard")
-	public String dashboard(HttpSession session) {
-		if (session.getAttribute("uuid") != null) {
-			return "dashboard.jsp";
-		}
-		
-		return "redirect:/";
-	}
-	
 	@PostMapping("/register")
 	public String register(@Valid @ModelAttribute("newUser") User newUser, BindingResult result, Model model, HttpSession session) {
 		User user = userService.register(newUser, result);
@@ -57,7 +48,7 @@ public class HomeController {
 		
 		session.setAttribute("uuid", user.getId());
 		
-		return "redirect:/dashboard";
+		return "redirect:/books";
 	}
 	
 	
@@ -71,6 +62,6 @@ public class HomeController {
 		
 		session.setAttribute("uuid", user.getId());
 		
-		return "redirect:/dashboard";
+		return "redirect:/books";
 	}
 }

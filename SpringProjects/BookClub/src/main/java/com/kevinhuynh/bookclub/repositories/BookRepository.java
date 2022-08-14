@@ -1,5 +1,11 @@
 package com.kevinhuynh.bookclub.repositories;
 
-public interface BookRepository {
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+
+import com.kevinhuynh.bookclub.models.Book;
+
+public interface BookRepository extends CrudRepository<Book, Long> {
+	List<Book> findAll();
 }
