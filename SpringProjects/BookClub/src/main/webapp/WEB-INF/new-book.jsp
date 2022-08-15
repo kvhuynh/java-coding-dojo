@@ -21,37 +21,33 @@
 	<title>Insert title here</title>
 </head>
 	<body>
-		<div class="container mt-5">
+		<div class="container mt-5 d-flex flex-column">
 			<div class="header d-flex justify-content-between">
 				<div class="header-left">
-					<h1>Welcome, <c:out value="${userName.userName}"/></h1>
-					<h5>Books from everyone's shelves</h5>
+					<h1>Add a Book to Your Shelf</h1>
 				</div>
 				<div class="header-right d-flex flex-column justify-content-around">
 					<a href="/logout">logout</a>
-					<a href="/books/new">+ Add a book to my shelf</a>
+					<a href="/books">back to shelves</a>
 				</div>
 			</div>
-			<table class="table table-bordered">
-			  <thead class="table-dark">
-			    <tr>
-			      <th scope="col">ID</th>
-			      <th scope="col">Title</th>
-			      <th scope="col">Author Name</th>
-			      <th scope="col">Posted By</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<c:forEach var="book" items="${allBooks}">
-			  		<tr>
-			  			<td><c:out value="${book.id}"/></td>
-			  			<td><a href="/books/${book.id}"><c:out value="${book.bookName}"/></a></td>
-		  				<td><c:out value="${book.author}"/></td>
-		  				<td><c:out value="${book.user.userName}"/></td>		  			
-		  			</tr>
-			  	</c:forEach>
-			  </tbody>
-			</table>
+			<div>
+				<form:form action="/books/new/submit" modelAttribute="books" class="d-flex flex-column col-6" method="POST">
+					<form:label path="bookName">Enter Book Title:</form:label>
+					<form:input type="text" path="bookName"></form:input>
+					<form:errors path="bookName"></form:errors>
+					
+					<form:label path="author">Author:</form:label>
+					<form:input type="text" path="author"></form:input>
+					<form:errors path="author"></form:errors>
+
+					<form:label path="userOpinions">Opinions:</form:label>
+					<form:input type="text" path="userOpinions"></form:input>
+					<form:errors path="userOpinions"></form:errors>					
+					
+					<input type="submit" class="btn btn-danger" value="Add Book"/>
+				</form:form>
+			</div>
 		</div>
 	</body>
 </html>
