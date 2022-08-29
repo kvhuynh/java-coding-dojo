@@ -28,9 +28,9 @@ public class BookService {
 		return bookRepository.findById(id).orElse(null);
 	}
 	
-	// ========== Delete ==========
-
-	public void delete(Long id) {
-		bookRepository.deleteById(id);
-	}
+//	// ========== Delete ==========
+//
+//	public void delete(Long id) {
+//		bookRepository.deleteById(id);
+//	}
 }
